@@ -5,11 +5,11 @@ import {
   getNextNthDate,
   isSameDate,
 } from "../utils/dateUtils";
+import { DAY_INDICES } from "../constants";
 
 import DateHeader from "./DateHeader";
 
 const TODAY = new Date("2021-10-25T19:27:49.401Z");
-const DAY_INDICES = [...Array(7).keys()];
 
 class WeekDatesHeader extends Component {
   constructor(props) {

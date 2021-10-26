@@ -1,0 +1,20 @@
+$cell-height: 40px;
+
+.time-bar {
+  width: 70px;
+}
+
+.time-bar-hour-label-container {
+  height: $cell-height;
+  display: block;
+  position: relative;
+}
+
+.time-bar-hour-label {
+  font-size: 0.7rem;
+  color: #444;
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  transform: translateY(50%);
+}

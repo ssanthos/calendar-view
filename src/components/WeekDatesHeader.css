@@ -1,5 +1,7 @@
 .week-dates-header {
   display: flex;
   border-bottom: 1px solid #ccc;
-  border-top: 1px solid #ccc;
+  grid-row: 1;
+  grid-column: 2;
+  margin-right: 15px; /* TODO: Ugh. Ugly hack so that the borders in the header align with the borders in the event grid. Find a better way. */
 }

@@ -7,3 +7,5 @@ export const DAY_SHORT_NAMES = [
   "FRI",
   "SAT",
 ];
+
+export const DAY_INDICES = [...Array(7).keys()];

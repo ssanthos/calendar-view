@@ -1,0 +1,37 @@
+.events-view {
+  grid-row: 2;
+  grid-column: 1 / span 2;
+  overflow: scroll;
+  display: flex;
+}
+
+$color-cell: transparent;
+$color-cell-border: #ccc;
+
+$cell-height: 40px;
+$cell-border-height: 1px;
+
+$canvas-height: $cell-height * 24;
+
+.events-view-canvas {
+  background: repeating-linear-gradient(
+    180deg,
+    $color-cell,
+    $color-cell ($cell-height - 1),
+    $color-cell-border ($cell-height - 1),
+    $color-cell-border $cell-height
+  );
+  height: $canvas-height;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.events-day {
+  flex-grow: 1;
+  border-right: 1px solid #ccc;
+}
+
+.events-day:first-child {
+  border-left: 1px solid #ccc;
+}

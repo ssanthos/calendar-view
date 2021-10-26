@@ -1,3 +1,9 @@
 .week-view-grid {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: hidden;
   display: grid;
+  width: 100%;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 70px 2fr;
 }
