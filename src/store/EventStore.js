@@ -25,6 +25,21 @@ class EventStore {
       .orderBy(eventTable.start, lovefield.Order.ASC)
       .exec();
   }
+  async getAllEventsBetween(startDate, endDate) {
+    const db = await this.dbPromise;
+    const eventTable = getEventTable(db);
+    return await db
+      .select()
+      .from(eventTable)
+      .where(
+        lovefield.op.and(
+          eventTable.start.gte(startDate),
+          eventTable.start.lt(endDate)
+        )
+      )
+      .orderBy(eventTable.start, lovefield.Order.ASC)
+      .exec();
+  }
   /** Private methods */
   async initStore_() {
     const schemaBuilder = lovefield.schema.create("calendar-view", 1);

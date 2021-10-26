@@ -1,25 +1,19 @@
 import React, { Component } from "react";
 import "./WeekDatesHeader.css";
-import {
-  getWeekStartDate,
-  getNextNthDate,
-  isSameDate,
-} from "../utils/dateUtils";
+import { getNextNthDate, isSameDate } from "../utils/dateUtils";
 import { DAY_INDICES } from "../constants";
 
 import DateHeader from "./DateHeader";
-
-const TODAY = new Date(); // new Date("2021-10-25T19:27:49.401Z");
 
 class WeekDatesHeader extends Component {
   constructor(props) {
     super(props);
     // TODO: The TODAY value should come from a store so that
     // the component can be updated when the current date changes.
-    this.state = { weekStartDate: getWeekStartDate(TODAY) };
+    this.state = { today: new Date() };
   }
   render() {
-    const { weekStartDate } = this.state;
+    const { weekStartDate } = this.props;
 
     return (
       <div className="week-dates-header">
@@ -30,7 +24,7 @@ class WeekDatesHeader extends Component {
               key={`${dayIndex}`}
               date={thisDate}
               dayOfWeek={dayIndex}
-              isToday={isSameDate(TODAY, thisDate)}
+              isToday={isSameDate(this.state.today, thisDate)}
             />
           );
         })}

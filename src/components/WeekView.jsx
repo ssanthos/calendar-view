@@ -8,8 +8,8 @@ class WeekView extends Component {
   render() {
     return (
       <div className="week-view-grid">
-        <WeekDatesHeader />
-        <EventsView />
+        <WeekDatesHeader weekStartDate={this.props.weekStartDate} />
+        <EventsView weekStartDate={this.props.weekStartDate} />
       </div>
     );
   }

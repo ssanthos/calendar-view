@@ -3,17 +3,39 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import "./EventsView.scss";
 import EventStore from "../store/EventStore";
+import deepEqual from "deep-equal";
 
 import TimeBar from "./TimeBar";
 import { DAY_INDICES } from "../constants";
+import {
+  getWeekStartDateWithStartTime,
+  getWeekEndDateWithEndTime,
+} from "../utils/dateUtils";
 
 class EventsView extends Component {
   constructor(props) {
     super(props);
     this.state = { events: [] };
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    return (
+      this.props.weekStartDate.getTime() !==
+        nextProps.weekStartDate.getTime() ||
+      !deepEqual(this.state.events, nextState.events)
+    );
+  }
   async componentDidMount() {
-    const events = await EventStore.getAllEvents();
+    await this.fetchEvents_();
+  }
+  async componentDidUpdate() {
+    await this.fetchEvents_();
+  }
+  async fetchEvents_() {
+    const { weekStartDate } = this.props;
+    const events = await EventStore.getAllEventsBetween(
+      getWeekStartDateWithStartTime(weekStartDate),
+      getWeekEndDateWithEndTime(weekStartDate)
+    );
     this.setState({ events });
   }
   renderDay_(dayIndex, events) {
