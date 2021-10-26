@@ -25,6 +25,7 @@ class WeekDatesHeader extends Component {
           const thisDate = getNextNthDate(weekStartDate, dayIndex);
           return (
             <DateHeader
+              key={`${dayIndex}`}
               date={thisDate}
               dayOfWeek={dayIndex}
               isToday={isSameDate(TODAY, thisDate)}
