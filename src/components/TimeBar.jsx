@@ -14,7 +14,7 @@ class TimeBar extends Component {
     return (
       <div className="time-bar">
         {HOUR_NUMBERS.map((hour) => (
-          <div className="time-bar-hour-label-container">
+          <div key={`${hour}`} className="time-bar-hour-label-container">
             <Typography className="time-bar-hour-label" variant="overline">
               {getHourLabel(hour)}
             </Typography>

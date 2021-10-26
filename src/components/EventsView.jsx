@@ -16,12 +16,13 @@ class EventsView extends Component {
     const events = await EventStore.getAllEvents();
     this.setState({ events });
   }
-  renderDay_(events) {
+  renderDay_(dayIndex, events) {
     events = events || [];
     return (
-      <div className="events-day">
+      <div className="events-day" key={`${dayIndex}`}>
         {events.map((event) => (
           <Box
+            key={`${event.id}`}
             className="event"
             sx={{
               top: `${getEventTopPositionPercentage(event.start)}%`,
@@ -43,7 +44,7 @@ class EventsView extends Component {
         <TimeBar />
         <div className="events-view-canvas">
           {DAY_INDICES.map((dayIndex) =>
-            this.renderDay_(eventByDay.get(dayIndex))
+            this.renderDay_(dayIndex, eventByDay.get(dayIndex))
           )}
         </div>
       </div>
