@@ -2,6 +2,11 @@ import lovefield from "lovefield";
 
 import { EVENTS } from "./stubEventData";
 
+/**
+ * The Event store abstraction over the data store.
+ * This will be exposed as a singleton to the rest of the app.
+ *
+ */
 class EventStore {
   constructor() {
     try {

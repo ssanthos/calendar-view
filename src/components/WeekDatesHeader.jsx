@@ -9,11 +9,13 @@ import { DAY_INDICES } from "../constants";
 
 import DateHeader from "./DateHeader";
 
-const TODAY = new Date("2021-10-25T19:27:49.401Z");
+const TODAY = new Date(); // new Date("2021-10-25T19:27:49.401Z");
 
 class WeekDatesHeader extends Component {
   constructor(props) {
     super(props);
+    // TODO: The TODAY value should come from a store so that
+    // the component can be updated when the current date changes.
     this.state = { weekStartDate: getWeekStartDate(TODAY) };
   }
   render() {
